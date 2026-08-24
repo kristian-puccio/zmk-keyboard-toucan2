@@ -1,7 +1,6 @@
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
 #define BASE  0
@@ -13,6 +12,7 @@
 #define MOUSE 7   // mouse + clipboard   (Voyager layer 6)
 
 // Left-hand keys, right-hand keys, all thumbs -- used for chordal hold.
+
 #define LEFT_KEYS  0  1  2  3  4  5 12 13 14 15 16 17 24 25 26 27 28 29
 #define RIGHT_KEYS 6  7  8  9 10 11 18 19 20 21 22 23 30 31 32 33 34 35
 #define THUMBS    36 37 38 39 40 41
@@ -20,6 +20,7 @@
 / {
     behaviors {
         // Home row mods. QMK chordal_hold -> hold-trigger-key-positions.
+
         hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -27,10 +28,12 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
+
             hold-trigger-key-positions = <RIGHT_KEYS THUMBS>;
             hold-trigger-on-release;
             display-name = "HRM Left";
         };
+
         hmr: home_row_mod_right {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -38,11 +41,14 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
+
             hold-trigger-key-positions = <LEFT_KEYS THUMBS>;
             hold-trigger-on-release;
             display-name = "HRM Right";
         };
+
         // Shift keys get the +100ms from your get_tapping_term().
+
         hmls: home_row_mod_left_slow {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -50,10 +56,12 @@
             tapping-term-ms = <300>;
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
+
             hold-trigger-key-positions = <RIGHT_KEYS THUMBS>;
             hold-trigger-on-release;
             display-name = "HRM Left Shift";
         };
+
         hmrs: home_row_mod_right_slow {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -61,33 +69,50 @@
             tapping-term-ms = <300>;
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
+
             hold-trigger-key-positions = <LEFT_KEYS THUMBS>;
             hold-trigger-on-release;
             display-name = "HRM Right Shift";
         };
+
         // Thumb shift: hold = Shift, tap = sticky Shift (next letter capitalised).
+
         sft: shift_sticky {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
             bindings = <&kp>, <&sk>;
+
             display-name = "Shift / Caps Next";
+        };
+
+        tlt: thumb-layer-tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Thumb Layer-Tap";
+            bindings = <&mo>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
         };
     };
 
     macros {
         // ST_MACRO_0: Alt+F1, wait 100ms, Enter
+
         alt_f1_enter: alt_f1_enter {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <10>;
             tap-ms = <10>;
-            bindings
-                = <&macro_tap &kp LA(F1)>
-                , <&macro_wait_time 100>
-                , <&macro_tap &kp RET>
-                ;
+            bindings =
+                <&macro_tap>,
+                <&kp LA(F1)>,
+                <&macro_wait_time 100>,
+                <&macro_tap>,
+                <&kp RET>;
+
             display-name = "Alt-F1 Enter";
         };
     };
@@ -98,83 +123,49 @@
         base {
             display-name = "BASE";
             bindings = <
-                &kp GRAVE &kp Q          &kp W          &kp E          &kp R          &kp T                       &kp Y                       &kp U           &kp I     &kp O    &kp P               &sk LSHFT
-                &kp ESC   &hml LALT A    &hml LCTRL S   &hml LGUI D    &hmls LSHFT F  &kp G                       &kp H                       &hmrs RSHFT J   &hmr RGUI K &hmr RCTRL L &hmr LALT SEMI  &kp SQT
-                &kp LSHFT &kp Z          &kp X          &kp C          &kp V          &hml LC(LA(LGUI)) B         &hmr LC(LA(LGUI)) N         &kp M           &kp COMMA &kp DOT  &kp FSLH            &kp RSHFT
-                                                        &lt MOUSE BSPC &lt NUM TAB    &sft LSHFT LSHFT            &lt SYM RET                 &lt MEDIA SPACE &lt FN DEL
+&kp GRAVE  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &sk LSHFT  &kp ESC  &hml LALT A  &hml LCTRL S  &hml LGUI D  &hmls LSHFT F  &kp G  &kp H  &hmrs RSHFT J  &hmr RGUI K  &hmr RCTRL L  &hmr LALT SEMI  &kp SQT  &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &hml LC(LA(LGUI)) B  &hmr LC(LA(LGUI)) N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT  &sft LEFT_SHIFT LEFT_SHIFT  &tlt 3 TAB  &tlt 1 BACKSPACE  &tlt 6 RET  &tlt 5 SPACE  &tlt 2 ESCAPE
             >;
         };
 
         sym {
             display-name = "SYM";
             bindings = <
-                &trans     &kp ASTRK        &kp LT           &kp GT          &kp BSLH          &kp DOT        &kp AMPS   &kp DLLR         &kp LBKT        &kp RBKT        &kp DLLR         &caps_word
-                &kp ESC    &hml LALT EXCL   &hml LCTRL MINUS &hml LGUI PLUS  &hmls LSHFT EQUAL &kp HASH       &kp PIPE   &hmrs RSHFT COLON &hmr RGUI LPAR &hmr RCTRL RPAR &hmr LALT QMARK  &kp DQT
-                &kp GRAVE  &kp COLON        &kp FSLH         &kp UNDER       &kp AT            &kp CARET      &kp TILDE  &kp PRCNT        &kp LBRC        &kp RBRC        &kp BSLH         &trans
-                                                             &trans          &trans            &trans         &trans     &trans           &trans
+&trans  &kp ASTRK  &kp LT  &kp GT  &kp BSLH  &kp DOT  &kp AMPS  &kp DLLR  &kp LBKT  &kp RBKT  &kp DLLR  &caps_word  &kp ESC  &hml LALT EXCL  &hml LCTRL MINUS  &hml LGUI PLUS  &hmls LSHFT EQUAL  &kp HASH  &kp PIPE  &hmrs RSHFT COLON  &hmr RGUI LPAR  &hmr RCTRL RPAR  &hmr LALT QMARK  &kp DQT  &kp GRAVE  &kp COLON  &kp FSLH  &kp UNDER  &kp AT  &kp CARET  &kp TILDE  &kp PRCNT  &kp LBRC  &kp RBRC  &kp BSLH  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
-        extra_2 {
-                status = "reserved";
-        };
+        extra_2 { status = "reserved"; };
 
         num {
             display-name = "NUM";
             bindings = <
-                &bt BT_CLR    &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4      &kp PRCNT   &kp N7  &kp N8  &kp N9  &kp PLUS      &kp KP_MULTIPLY
-                &trans        &kp LALT     &kp LCTRL    &kp LGUI     &kp LSHFT    &trans            &kp KP_DOT  &kp N4  &kp N5  &kp N6  &kp KP_MINUS  &kp FSLH
-                &bootloader   &studio_unlock &trans     &trans       &trans       &trans            &kp N0      &kp N1  &kp N2  &kp N3  &kp KP_EQUAL  &tog NUM
-                                                        &trans       &trans       &trans            &trans      &trans  &bootloader
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &kp PRCNT  &kp N7  &kp N8  &kp N9  &kp PLUS  &kp KP_MULTIPLY  &trans  &kp LALT  &kp LCTRL  &kp LGUI  &kp LSHFT  &trans  &kp KP_DOT  &kp N4  &kp N5  &kp N6  &kp KP_MINUS  &kp FSLH  &bootloader  &studio_unlock  &trans  &trans  &trans  &trans  &kp N0  &kp N1  &kp N2  &kp N3  &kp KP_EQUAL  &tog 0  &trans  &trans  &trans  &trans  &trans  &bootloader
             >;
         };
 
         touch {
             display-name = "TOUCH";
             bindings = <
-                &trans &trans &trans &trans &trans &trans        &trans &trans &trans &trans &trans &trans
-                &trans &trans &trans &trans &trans &trans        &trans &trans &trans &trans &trans &trans
-                &trans &trans &trans &trans &trans &trans        &trans &trans &trans &trans &trans &trans
-                              &mkp MCLK &mkp LCLK &mkp RCLK      &mkp LCLK &mkp RCLK &mkp MCLK
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &mkp MCLK  &mkp LCLK  &mkp RCLK  &mkp LCLK  &mkp RCLK  &mkp MCLK
             >;
         };
 
         media {
             display-name = "MEDIA";
             bindings = <
-                &kp C_PP  &kp C_PREV   &kp C_VOL_DN &kp C_VOL_UP &kp C_MUTE &kp C_NEXT              &kp LG(LEFT) &kp LG(RIGHT) &kp LG(LS(LBKT)) &kp LG(LS(RBKT)) &kp INS   &kp LG(LS(BSLH))
-                &kp CAPS  &kp LALT     &kp LCTRL    &kp LGUI     &kp LSHFT  &trans                  &kp LEFT     &kp DOWN      &kp UP           &kp RIGHT        &kp DEL   &trans
-                &kp LG(LS(Z)) &kp LG(Z) &kp LG(X)   &kp LG(C)    &trans     &kp LA(LG(LS(V)))       &kp END      &kp PG_DN     &kp PG_UP        &kp HOME         &kp SLCK  &tog MEDIA
-                                                    &trans       &trans     &trans                  &trans       &trans        &trans
+&kp C_PP  &kp C_PREV  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_MUTE  &kp C_NEXT  &kp LG(LEFT)  &kp LG(RIGHT)  &kp LG(LS(LBKT))  &kp LG(LS(RBKT))  &kp INS  &kp LG(LS(BSLH))  &kp CAPS  &kp LALT  &kp LCTRL  &kp LGUI  &kp LSHFT  &trans  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &kp DEL  &trans  &kp LG(LS(Z))  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &trans  &kp LA(LG(LS(V)))  &kp END  &kp PG_DN  &kp PG_UP  &kp HOME  &kp SLCK  &tog 0  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
         fn {
             display-name = "FN";
             bindings = <
-                &trans   &trans     &kp F10    &kp F11    &kp F12    &kp LC(LS(F12))     &trans     &kp F7  &kp F8  &kp F9  &trans &trans
-                &kp ESC  &kp LALT   &kp LCTRL  &kp LGUI   &kp LSHFT  &trans              &kp DEL    &kp F4  &kp F5  &kp F6  &trans &trans
-                &trans   &trans     &trans     &trans     &trans     &alt_f1_enter       &trans     &kp F1  &kp F2  &kp F3  &trans &trans
-                                               &trans     &trans     &trans              &trans     &trans  &trans
+&trans  &trans  &kp F10  &kp F11  &kp F12  &kp LC(LS(F12))  &trans  &kp F7  &kp F8  &kp F9  &trans  &trans  &kp ESC  &kp LALT  &kp LCTRL  &kp LGUI  &kp LSHFT  &trans  &kp DEL  &kp F4  &kp F5  &kp F6  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &alt_f1_enter  &trans  &kp F1  &kp F2  &kp F3  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
-        mouse {
-            display-name = "MOU";
-            bindings = <
-                &trans &none        &none      &mkp RCLK  &mkp LCLK   &trans      &trans &msc SCRL_DOWN  &mmv MOVE_UP   &msc SCRL_UP    &trans &trans
-                &trans &none        &kp LALT   &kp LCTRL  &kp LGUI    &kp LSHFT   &trans &mmv MOVE_LEFT  &mmv MOVE_DOWN &mmv MOVE_RIGHT &trans &trans
-                &trans &kp K_UNDO   &kp K_CUT  &kp K_COPY &kp K_PASTE &none       &trans &none           &none          &none           &trans &tog MOUSE
-                                               &trans     &trans      &trans      &trans &trans          &trans
-            >;
-        };
+        extra_8 { status = "reserved"; };
 
-        extra_8 {
-                status = "reserved";
-        };
-
-        extra_9 {
-                status = "reserved";
-        };
+        extra_9 { status = "reserved"; };
     };
 };
