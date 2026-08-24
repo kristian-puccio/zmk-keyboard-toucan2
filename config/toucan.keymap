@@ -134,7 +134,15 @@
             >;
         };
 
-        extra_2 { status = "reserved"; };
+        spare {
+            display-name = "SPARE";
+            bindings = <
+                &trans &trans &trans &trans &trans &trans      &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans      &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans      &trans &trans &trans &trans &trans &trans
+                              &trans &trans &trans             &trans &trans &trans
+            >;
+        };
 
         num {
             display-name = "NUM";
