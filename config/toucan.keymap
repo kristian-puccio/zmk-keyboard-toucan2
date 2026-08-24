@@ -137,7 +137,7 @@
         spare {
             display-name = "SPARE";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LA(LC(LG(I)))  &kp LA(LC(LG(O)))  &trans  &trans  &trans  &trans  &trans  &trans  &kp LA(LC(LG(F)))  &trans  &kp LA(LS(LC(LG(H))))  &kp LA(LC(LG(J)))  &kp LA(LC(LG(L)))  &kp LA(LC(LG(L)))  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LA(LC(LG(I)))  &kp LA(LC(LG(O)))  &trans  &trans  &trans  &trans  &trans  &trans  &kp LA(LC(LG(F)))  &trans  &kp LA(LC(LG(H)))  &kp LA(LC(LG(J)))  &kp LA(LC(LG(L)))  &kp LA(LC(LG(L)))  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
