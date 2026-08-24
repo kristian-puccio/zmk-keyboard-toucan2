@@ -5,8 +5,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 #define BASE  0
-#define SYML  1   // left-hand symbols   (Voyager layer 1)
-#define SYMR  2   // right-hand symbols  (Voyager layer 2)
+#define SYM   1   // symbols, both hands (Voyager layers 1 + 2 merged)
 #define NUM   3   // numpad + system     (Voyager layer 3)
 #define TOUCH 4   // trackpad touch layer -- index is fixed in toucan.dtsi
 #define MEDIA 5   // media / nav / macOS (Voyager layer 5)
@@ -66,6 +65,15 @@
             hold-trigger-on-release;
             display-name = "HRM Right Shift";
         };
+        // Thumb shift: hold = Shift, tap = sticky Shift (next letter capitalised).
+        sft: shift_sticky {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&sk>;
+            display-name = "Shift / Caps Next";
+        };
     };
 
     macros {
@@ -92,29 +100,23 @@
             bindings = <
                 &kp GRAVE &kp Q          &kp W          &kp E          &kp R          &kp T                       &kp Y                       &kp U           &kp I     &kp O    &kp P               &sk LSHFT
                 &kp ESC   &hml LALT A    &hml LCTRL S   &hml LGUI D    &hmls LSHFT F  &kp G                       &kp H                       &hmrs RSHFT J   &hmr RGUI K &hmr RCTRL L &hmr LALT SEMI  &kp SQT
-                &kp LSHFT &lt SYMR Z     &kp X          &kp C          &kp V          &hml LC(LA(LGUI)) B         &hmr LC(LA(LGUI)) N         &kp M           &kp COMMA &kp DOT  &lt SYML FSLH       &kp RSHFT
-                                                        &caps_word     &lt NUM TAB    &lt MOUSE BSPC              &lt FN RET                  &lt MEDIA SPACE &kp DEL
+                &kp LSHFT &kp Z          &kp X          &kp C          &kp V          &hml LC(LA(LGUI)) B         &hmr LC(LA(LGUI)) N         &kp M           &kp COMMA &kp DOT  &kp FSLH            &kp RSHFT
+                                                        &lt MOUSE BSPC &lt NUM TAB    &sft LSHFT LSHFT            &lt SYM RET                 &lt MEDIA SPACE &lt FN DEL
             >;
         };
 
-        syml {
-            display-name = "SYM-L";
+        sym {
+            display-name = "SYM";
             bindings = <
-                &trans     &kp ASTRK  &kp LT     &kp GT     &kp BSLH   &kp DOT        &trans     &trans     &trans     &trans     &trans     &trans
-                &kp ESC    &kp EXCL   &kp MINUS  &kp PLUS   &kp EQUAL  &kp HASH       &trans     &kp RSHFT  &kp RGUI   &kp RCTRL  &kp RALT   &trans
-                &kp GRAVE  &kp COLON  &kp FSLH   &kp ASTRK  &kp AT     &kp CARET      &trans     &trans     &trans     &trans     &trans     &trans
-                                                 &trans     &trans     &kp DEL        &trans     &trans     &trans
+                &trans     &kp ASTRK        &kp LT           &kp GT          &kp BSLH          &kp DOT        &kp AMPS   &kp DLLR         &kp LBKT        &kp RBKT        &kp DLLR         &caps_word
+                &kp ESC    &hml LALT EXCL   &hml LCTRL MINUS &hml LGUI PLUS  &hmls LSHFT EQUAL &kp HASH       &kp PIPE   &hmrs RSHFT COLON &hmr RGUI LPAR &hmr RCTRL RPAR &hmr LALT QMARK  &kp DQT
+                &kp GRAVE  &kp COLON        &kp FSLH         &kp UNDER       &kp AT            &kp CARET      &kp TILDE  &kp PRCNT        &kp LBRC        &kp RBRC        &kp BSLH         &trans
+                                                             &trans          &trans            &trans         &trans     &trans           &trans
             >;
         };
 
-        symr {
-            display-name = "SYM-R";
-            bindings = <
-                &trans &trans     &trans     &trans     &trans     &trans        &kp AMPS   &kp DLLR   &kp LBKT   &kp RBKT   &kp DLLR   &caps_word
-                &trans &kp LALT   &kp LCTRL  &kp LGUI   &kp LSHFT  &trans        &kp PIPE   &kp COLON  &kp LPAR   &kp RPAR   &kp QMARK  &kp DQT
-                &trans &trans     &trans     &trans     &trans     &trans        &kp TILDE  &kp PRCNT  &kp LBRC   &kp RBRC   &kp BSLH   &trans
-                                             &trans     &trans     &trans        &trans     &trans     &trans
-            >;
+        extra_2 {
+                status = "reserved";
         };
 
         num {
