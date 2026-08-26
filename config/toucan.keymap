@@ -6,6 +6,7 @@
 
 #define BASE  0
 #define SYM   1   // symbols, both hands (Voyager layers 1 + 2 merged)
+#define SPARE 2   // window manager chords
 #define NUM   3   // numpad + system     (Voyager layer 3)
 #define TOUCH 4   // trackpad touch layer -- index is fixed in toucan.dtsi
 #define MEDIA 5   // media / nav / macOS (Voyager layer 5)
@@ -91,6 +92,14 @@
             display-name = "Shift / Caps Next";
         };
 
+        // Stock &soft_off pairs split-peripheral-off-on-press with no hold time; that
+        // combination powers the peripheral off on a brief tap. Let both halves time it.
+        soff: soft_off_hold {
+            compatible = "zmk,behavior-soft-off";
+            #binding-cells = <0>;
+            hold-time-ms = <2000>;
+        };
+
         tlt: thumb-layer-tap {
             compatible = "zmk,behavior-hold-tap";
             label = "Thumb Layer-Tap";
@@ -127,7 +136,7 @@
         base {
             display-name = "BASE";
             bindings = <
-&kp GRAVE  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &sk LSHFT  &kp ESC  &hml LALT A  &hml LCTRL S  &hml LGUI D  &hmls LSHFT F  &kp G  &kp H  &hmrs RSHFT J  &hmr RGUI K  &hmr RCTRL L  &hmr LALT SEMI  &kp SQT  &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &hml LC(LA(LGUI)) B  &hmr LC(LA(LGUI)) N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT  &sft LEFT_SHIFT LEFT_SHIFT  &tlt 3 TAB  &tlt 1 BACKSPACE  &tlt 6 RET  &tlt 5 SPACE  &tlt 2 ESCAPE
+&kp GRAVE  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &sk LSHFT  &kp ESC  &hml LALT A  &hml LCTRL S  &hml LGUI D  &hmls LSHFT F  &kp G  &kp H  &hmrs RSHFT J  &hmr RGUI K  &hmr RCTRL L  &hmr LALT SEMI  &kp SQT  &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &hml LC(LA(LGUI)) B  &hmr LC(LA(LGUI)) N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT  &sft LEFT_SHIFT LEFT_SHIFT  &tlt NUM TAB  &tlt SYM BACKSPACE  &tlt FN RET  &tlt MEDIA SPACE  &tlt SPARE ESCAPE
             >;
         };
 
@@ -148,7 +157,7 @@
         num {
             display-name = "NUM";
             bindings = <
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &kp PRCNT  &kp N7  &kp N8  &kp N9  &kp PLUS  &kp KP_MULTIPLY  &trans  &kp LALT  &kp LCTRL  &kp LGUI  &kp LSHFT  &trans  &kp KP_DOT  &kp N4  &kp N5  &kp N6  &kp KP_MINUS  &kp FSLH  &bootloader  &studio_unlock  &trans  &trans  &trans  &trans  &kp N0  &kp N1  &kp N2  &kp N3  &kp KP_EQUAL  &sys_reset  &trans  &trans  &trans  &trans  &trans  &bootloader
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &kp PRCNT  &kp N7  &kp N8  &kp N9  &kp PLUS  &kp KP_MULTIPLY  &trans  &kp LALT  &kp LCTRL  &kp LGUI  &kp LSHFT  &trans  &kp KP_DOT  &kp N4  &kp N5  &kp N6  &kp KP_MINUS  &kp FSLH  &bootloader  &studio_unlock  &sys_reset  &soff  &trans  &trans  &kp N0  &kp N1  &kp N2  &kp N3  &kp KP_EQUAL  &sys_reset  &trans  &trans  &trans  &trans  &trans  &bootloader
             >;
         };
 
