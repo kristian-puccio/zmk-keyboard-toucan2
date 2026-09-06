@@ -20,3 +20,12 @@ The linked trackpad module is based on https://github.com/geeksville/zmk_driver_
 ZMK code snippets are taken from the ZMK documentation under the MIT license.
 
 The embedded font QuinqueFive is designed by GGBotNet, licensed under under the SIL Open Font License, Version 1.1.
+
+# Keymap formatting
+
+`config/toucan.keymap` layer bindings are laid out in rows matching the
+physical layout, because keymap viewers infer rows from newlines. Editors such
+as ZMK Studio and Keymap Editor flatten each layer onto one line; run
+`scripts/format_keymap.py` after using them (a `pre-commit` hook does this
+automatically once you run `git config core.hooksPath .githooks`, and CI checks
+it with `--check`).

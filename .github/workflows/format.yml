@@ -1,0 +1,9 @@
+name: Check keymap formatting
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/format_keymap.py --check

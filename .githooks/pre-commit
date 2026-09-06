@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+git diff --cached --name-only | grep -q '^config/toucan.keymap$' || exit 0
+python3 "$(git rev-parse --show-toplevel)/scripts/format_keymap.py"
+git add config/toucan.keymap
