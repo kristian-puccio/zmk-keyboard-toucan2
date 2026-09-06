@@ -137,49 +137,70 @@
         base {
             display-name = "BASE";
             bindings = <
-&kp GRAVE  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &caps_word  &kp ESC  &hml LALT A  &hml LCTRL S  &hml LGUI D  &hmls LSHFT F  &kp G  &kp H  &hmrs RSHFT J  &hmr RGUI K  &hmr RCTRL L  &hmr LALT SEMI  &kp SQT  &sft LSHFT LEFT_SHIFT  &kp Z  &kp X  &kp C  &kp V  &hml LC(LA(LGUI)) B  &hmr LC(LA(LGUI)) N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &sft RIGHT_SHIFT RIGHT_SHIFT  &lt 2 DELETE  &tlt NUM TAB  &tlt SYM BACKSPACE  &tlt FN RET  &tlt MEDIA SPACE  &tlt SPARE ESCAPE
+                &kp GRAVE              &kp Q        &kp W         &kp E        &kp R          &kp T                    &kp Y                &kp U          &kp I        &kp O         &kp P           &caps_word
+                &kp ESC                &hml LALT A  &hml LCTRL S  &hml LGUI D  &hmls LSHFT F  &kp G                    &kp H                &hmrs RSHFT J  &hmr RGUI K  &hmr RCTRL L  &hmr LALT SEMI  &kp SQT
+                &sft LSHFT LEFT_SHIFT  &kp Z        &kp X         &kp C        &kp V          &hml LC(LA(LGUI)) B      &hmr LC(LA(LGUI)) N  &kp M          &kp COMMA    &kp DOT       &kp FSLH        &sft RIGHT_SHIFT RIGHT_SHIFT
+                                                                  &lt 2 DELETE  &tlt NUM TAB      &tlt SYM BACKSPACE      &tlt FN RET   &tlt MEDIA SPACE  &tlt SPARE ESCAPE
             >;
         };
 
         sym {
             display-name = "SYM";
             bindings = <
-&trans  &kp ASTRK  &kp LT  &kp GT  &kp PERCENT  &kp DOT  &kp AMPS  &kp DLLR  &kp LBKT  &kp RBKT  &kp DLLR  &trans  &kp ESC  &hml LALT EXCL  &hml LCTRL MINUS  &hml LGUI PLUS  &hmls LSHFT EQUAL  &kp HASH  &kp PIPE  &hmrs RSHFT COLON  &hmr RGUI LPAR  &hmr RCTRL RPAR  &hmr LALT QMARK  &kp DQT  &kp GRAVE  &kp COLON  &kp FSLH  &kp UNDER  &kp AT  &kp CARET  &kp TILDE  &kp PRCNT  &kp LBRC  &kp RBRC  &kp BSLH  &kp SLASH  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans     &kp ASTRK       &kp LT            &kp GT          &kp PERCENT        &kp DOT        &kp AMPS   &kp DLLR           &kp LBKT        &kp RBKT         &kp DLLR         &trans
+                &kp ESC    &hml LALT EXCL  &hml LCTRL MINUS  &hml LGUI PLUS  &hmls LSHFT EQUAL  &kp HASH       &kp PIPE   &hmrs RSHFT COLON  &hmr RGUI LPAR  &hmr RCTRL RPAR  &hmr LALT QMARK  &kp DQT
+                &kp GRAVE  &kp COLON       &kp FSLH          &kp UNDER       &kp AT             &kp CARET      &kp TILDE  &kp PRCNT          &kp LBRC        &kp RBRC         &kp BSLH         &kp SLASH
+                                                             &trans  &trans  &trans      &trans  &trans  &trans
             >;
         };
 
         functionality {
             display-name = "SPARE";
             bindings = <
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &trans  &trans  &trans  &trans  &kp LA(LC(LG(U)))  &kp LA(LC(LG(I)))  &kp LA(LC(LG(O)))  &trans  &kp LS(LG(BACKSLASH))  &trans  &trans  &trans  &trans  &kp LA(LC(LG(F)))  &trans  &kp LA(LC(LG(H)))  &kp LA(LC(LG(J)))  &kp LA(LC(LG(K)))  &kp LA(LC(LG(L)))  &trans  &kp LG(LS(SPACE))  &bootloader  &studio_unlock  &trans  &soff  &trans  &sys_reset  &sys_reset  &trans  &trans  &trans  &trans  &bootloader  &trans  &trans  &trans  &trans  &trans  &trans
+                &bt BT_CLR   &bt BT_SEL 0    &bt BT_SEL 1  &trans  &trans             &trans          &trans             &kp LA(LC(LG(U)))  &kp LA(LC(LG(I)))  &kp LA(LC(LG(O)))  &trans  &kp LS(LG(BACKSLASH))
+                &trans       &trans          &trans        &trans  &kp LA(LC(LG(F)))  &trans          &kp LA(LC(LG(H)))  &kp LA(LC(LG(J)))  &kp LA(LC(LG(K)))  &kp LA(LC(LG(L)))  &trans  &kp LG(LS(SPACE))
+                &bootloader  &studio_unlock  &trans        &soff   &trans             &sys_reset      &sys_reset         &trans             &trans             &trans             &trans  &bootloader
+                                                           &trans  &trans  &trans      &trans  &trans  &trans
             >;
         };
 
         num {
             display-name = "NUM";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &kp DOLLAR  &kp N7  &kp N8  &kp N9  &kp PLUS  &kp KP_MULTIPLY  &trans  &kp LALT  &kp LCTRL  &kp LGUI  &kp LSHFT  &trans  &kp KP_DOT  &kp N4  &kp N5  &kp N6  &kp KP_MINUS  &kp FSLH  &trans  &trans  &trans  &trans  &trans  &trans  &kp N0  &kp N1  &kp N2  &kp N3  &kp KP_EQUAL  &kp PERCENT  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans    &trans     &trans    &trans     &trans      &kp DOLLAR  &kp N7  &kp N8  &kp N9  &kp PLUS      &kp KP_MULTIPLY
+                &trans  &kp LALT  &kp LCTRL  &kp LGUI  &kp LSHFT  &trans      &kp KP_DOT  &kp N4  &kp N5  &kp N6  &kp KP_MINUS  &kp FSLH
+                &trans  &trans    &trans     &trans    &trans     &trans      &kp N0      &kp N1  &kp N2  &kp N3  &kp KP_EQUAL  &kp PERCENT
+                                             &trans  &trans  &trans      &trans  &trans  &trans
             >;
         };
 
         touch {
             display-name = "TOUCH";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &mkp MCLK  &mkp LCLK  &mkp RCLK  &mkp LCLK  &mkp RCLK  &mkp MCLK
+                &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
+                                        &mkp MCLK  &mkp LCLK  &mkp RCLK      &mkp LCLK  &mkp RCLK  &mkp MCLK
             >;
         };
 
         media {
             display-name = "MEDIA";
             bindings = <
-&kp C_PP  &kp C_PREV  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_MUTE  &kp C_NEXT  &kp LG(LEFT)  &kp LG(RIGHT)  &kp LG(LS(LBKT))  &kp LG(LS(RBKT))  &kp INS  &kp LG(LS(BSLH))  &kp CAPS  &kp LALT  &kp LCTRL  &kp LGUI  &kp LSHFT  &trans  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &kp DEL  &trans  &kp LG(LS(Z))  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LA(LG(LS(V)))  &kp END  &kp PG_DN  &kp PG_UP  &kp HOME  &kp SLCK  &out OUT_TOG  &trans  &trans  &trans  &trans  &trans  &trans
+                &kp C_PP       &kp C_PREV  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_MUTE  &kp C_NEXT             &kp LG(LEFT)  &kp LG(RIGHT)  &kp LG(LS(LBKT))  &kp LG(LS(RBKT))  &kp INS   &kp LG(LS(BSLH))
+                &kp CAPS       &kp LALT    &kp LCTRL     &kp LGUI      &kp LSHFT   &trans                 &kp LEFT      &kp DOWN       &kp UP            &kp RIGHT         &kp DEL   &trans
+                &kp LG(LS(Z))  &kp LG(Z)   &kp LG(X)     &kp LG(C)     &kp LG(V)   &kp LA(LG(LS(V)))      &kp END       &kp PG_DN      &kp PG_UP         &kp HOME          &kp SLCK  &out OUT_TOG
+                                                         &trans  &trans  &trans      &trans  &trans  &trans
             >;
         };
 
         fn {
             display-name = "FN";
             bindings = <
-&trans  &trans  &kp F10  &kp F11  &kp F12  &kp LC(LS(F12))  &trans  &kp F7  &kp F8  &kp F9  &kp F12  &trans  &kp ESC  &kp LALT  &kp LCTRL  &kp LGUI  &kp LSHFT  &trans  &kp DEL  &kp F4  &kp F5  &kp F6  &kp F11  &trans  &trans  &trans  &trans  &trans  &trans  &alt_f1_enter  &trans  &kp F1  &kp F2  &kp F3  &kp F10  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans   &trans    &kp F10    &kp F11   &kp F12    &kp LC(LS(F12))      &trans   &kp F7  &kp F8  &kp F9  &kp F12  &trans
+                &kp ESC  &kp LALT  &kp LCTRL  &kp LGUI  &kp LSHFT  &trans               &kp DEL  &kp F4  &kp F5  &kp F6  &kp F11  &trans
+                &trans   &trans    &trans     &trans    &trans     &alt_f1_enter        &trans   &kp F1  &kp F2  &kp F3  &kp F10  &trans
+                                              &trans  &trans  &trans      &trans  &trans  &trans
             >;
         };
 
