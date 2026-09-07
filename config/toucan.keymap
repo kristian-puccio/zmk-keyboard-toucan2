@@ -107,6 +107,21 @@
             bindings = <&mo>, <&kp>;
 
             #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+        };
+
+        // For thumbs rolled against letters: tap-preferred never steals the tap,
+        // at the cost of 200ms to reach the layer.
+
+        tltt: thumb-layer-tap-tap-preferred {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Thumb Layer-Tap TP";
+            bindings = <&mo>, <&kp>;
+
+            #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;
@@ -139,10 +154,10 @@
         base {
             display-name = "BASE";
             bindings = <
-                &kp GRAVE              &kp Q        &kp W         &kp E              &kp R          &kp T                             &kp Y                &kp U              &kp I        &kp O         &kp P           &caps_word
-                &kp ESC                &hml LALT A  &hml LCTRL S  &hml LGUI D        &hmls LSHFT F  &kp G                             &kp H                &hmrs RSHFT J      &hmr RGUI K  &hmr RCTRL L  &hmr RALT SEMI  &kp SQT
-                &sft LSHFT LEFT_SHIFT  &kp Z        &kp X         &kp C              &kp V          &hml LC(LA(LGUI)) B               &hmr LC(LA(LGUI)) N  &kp M              &kp COMMA    &kp DOT       &kp FSLH        &sft RIGHT_SHIFT RIGHT_SHIFT
-                                                                  &tlt SPARE DELETE  &tlt NUM TAB   &tlt SYM BACKSPACE   &tlt FN RET  &tlt MEDIA SPACE     &tlt SPARE ESCAPE
+                &kp GRAVE              &kp Q        &kp W         &kp E               &kp R          &kp T                             &kp Y                &kp U               &kp I        &kp O         &kp P           &caps_word
+                &kp ESC                &hml LALT A  &hml LCTRL S  &hml LGUI D         &hmls LSHFT F  &kp G                             &kp H                &hmrs RSHFT J       &hmr RGUI K  &hmr RCTRL L  &hmr RALT SEMI  &kp SQT
+                &sft LSHFT LEFT_SHIFT  &kp Z        &kp X         &kp C               &kp V          &hml LC(LA(LGUI)) B               &hmr LC(LA(LGUI)) N  &kp M               &kp COMMA    &kp DOT       &kp FSLH        &sft RIGHT_SHIFT RIGHT_SHIFT
+                                                                  &tltt SPARE DELETE  &tlt NUM TAB   &tlt SYM BACKSPACE   &tlt FN RET  &tltt MEDIA SPACE    &tltt SPARE ESCAPE
             >;
         };
 
